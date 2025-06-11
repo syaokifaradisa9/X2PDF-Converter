@@ -10,7 +10,6 @@ D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\obj\Debug\ExcelToPd
 D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\obj\Debug\ExcelToPdfApp.exe
 D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\obj\Debug\ExcelToPdfApp.xml
 D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\obj\Debug\ExcelToPdfApp.pdb
-D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\obj\Debug\ExcelToPdfApp.exe.config
 D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\bin\Debug\itext.barcodes.dll
 D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\bin\Debug\itext.bouncy-castle-connector.dll
 D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\bin\Debug\itext.commons.dll
@@ -66,3 +65,4 @@ D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\bin\Debug\System.Ru
 D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\bin\Debug\System.ValueTuple.xml
 D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\obj\Debug\ExcelToP.4C726B7B.Up2Date
+D:\Project\Desktop\ExcelToPdfApp\ExcelToPdfApp\ExcelToPdfApp\obj\Debug\ExcelToPdfApp.exe.config

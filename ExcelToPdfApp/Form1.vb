@@ -130,6 +130,19 @@ Public Class Form1
                               labelPdf, txtPdfFolder, btnBrowsePdf,
                               btnConvert, btnSettingSheet, btnInfo,
                               progressBar})
+
+        ' Dapatkan path absolut
+        Dim sourcePath As String = Path.GetFullPath(Path.Combine(Application.StartupPath, "..", "Source"))
+        Dim targetPath As String = Path.GetFullPath(Path.Combine(Application.StartupPath, "..", "Target"))
+
+        ' Buat folder jika belum ada
+        Directory.CreateDirectory(sourcePath)
+        Directory.CreateDirectory(targetPath)
+
+        ' Set nilai textbox
+        txtExcelFolder.Text = sourcePath
+        txtPdfFolder.Text = targetPath
+
     End Sub
 
     Private Sub OnSettingSheetClick(sender As Object, e As EventArgs)
@@ -379,10 +392,12 @@ Public Class Form1
     Private Sub ReleaseObject(ByVal obj As Object)
         Try
             System.Runtime.InteropServices.Marshal.ReleaseComObject(obj)
-        Catch
-        Finally
             obj = Nothing
+        Catch
+            obj = Nothing
+        Finally
             GC.Collect()
         End Try
     End Sub
+
 End Class
