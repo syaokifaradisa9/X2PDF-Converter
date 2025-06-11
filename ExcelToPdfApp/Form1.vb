@@ -17,7 +17,7 @@ Public Class Form1
         Me.InitializeComponent()
 
         ' Form settings
-        Me.Text = "Sigaluh X2PDF Converter"
+        Me.Text = "X2PDF Converter"
         Me.Size = New Size(700, 350)
         Me.StartPosition = FormStartPosition.CenterScreen
         Me.FormBorderStyle = FormBorderStyle.FixedDialog
@@ -25,7 +25,7 @@ Public Class Form1
         Me.BackColor = Color.FromArgb(245, 245, 245)
 
         Dim titleLabel As New Label With {
-            .Text = "SIGALUH X2PDF CONVERTER",
+            .Text = "X2PDF CONVERTER",
             .Font = New Font("Segoe UI", 14, FontStyle.Bold),
             .ForeColor = Color.FromArgb(33, 33, 33),
             .Location = New Point(200, 10),
@@ -138,7 +138,7 @@ Public Class Form1
         ' Buat default jika belum ada
         If Not File.Exists(sheetListPath) Then
             Dim defaultSheets = New List(Of String) From {
-            "ID", "UB", "UB RPM", "UB TIMER", "UB TACHO", "UB BPM", "UB SUHU", "PENYELIA", "LH"
+            "Sheet1"
         }
             File.WriteAllLines(sheetListPath, defaultSheets)
         End If
@@ -151,11 +151,10 @@ Public Class Form1
 
     Private Sub OnInfoClick(sender As Object, e As EventArgs)
         Dim infoText As String = "Aplikasi Sigaluh X2PDF Converter" & Environment.NewLine &
-                                 "Versi     : 1.0.0" & Environment.NewLine &
+                                 "Versi     : 1.0.1" & Environment.NewLine &
                                  "Developer : Muhammad Syaoki Faradisa" & Environment.NewLine & Environment.NewLine &
                                  "Deskripsi :" & Environment.NewLine &
-                                 "Aplikasi ini membantu petugas untuk mengonversi file Excel menjadi PDF secara otomatis." &
-                                 "Dikembangkan untuk mempercepat proses penyeliaan dan pengunggahan dokumen ke sistem SIGALUH."
+                                 "Aplikasi ini membantu untuk mengonversi file Excel menjadi PDF secara otomatis."
 
         MessageBox.Show(infoText, "Tentang Aplikasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
@@ -197,7 +196,7 @@ Public Class Form1
     Private Function LoadTargetSheetsFromFile(filePath As String) As List(Of String)
         If Not File.Exists(filePath) Then
             Dim defaultSheets = New List(Of String) From {
-                "ID", "UB", "UB RPM", "UB TIMER", "UB TACHO", "UB BPM", "UB SUHU", "PENYELIA", "LH"
+                "Sheet1"
             }
             File.WriteAllLines(filePath, defaultSheets)
             Return defaultSheets
