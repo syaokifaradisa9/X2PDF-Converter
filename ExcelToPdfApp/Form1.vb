@@ -185,6 +185,17 @@ Public Class Form1
         AddHandler btnSettingSheet.Click, AddressOf OnSettingSheetClick
         Me.Controls.Add(btnSettingSheet)
 
+        Dim btnSettingApiKey As New Button() With {
+            .Text = "Setting API Key",
+            .Size = New Size(130, 33),
+            .BackColor = Color.FromArgb(23, 162, 184), ' Warna Teal
+            .ForeColor = Color.White,
+            .Anchor = AnchorStyles.Bottom Or AnchorStyles.Right
+        }
+        btnSettingApiKey.Location = New Point(btnInfo.Left - btnSettingApiKey.Width - 140, btnInfo.Top)
+        AddHandler btnSettingApiKey.Click, AddressOf OnSettingApiKeyClick ' Handler baru
+        Me.Controls.Add(btnSettingApiKey)
+
 
         ' =================================================================
         ' SETUP AWAL & KONFIGURASI API
@@ -205,9 +216,46 @@ Public Class Form1
         httpClient.DefaultRequestHeaders.Add("X-CONVERTER-API-KEY", "xgr8xX2Ee0ZDUAWOmQULQhgprd9udQvrHFtbfn0Ep7kif8HYtcOXDgvmcve6bDma")
     End Sub
 
+    Private Function LoadApiKeyFromFile() As String
+        Dim apiKeyPath As String = Path.Combine(Application.StartupPath, "ApiKey.txt")
+        Try
+            If File.Exists(apiKeyPath) Then
+                Return File.ReadAllText(apiKeyPath).Trim()
+            End If
+        Catch ex As Exception
+            Console.WriteLine($"Gagal membaca file API Key: {ex.Message}")
+        End Try
+        Return "" ' Kembalikan string kosong jika gagal
+    End Function
+
+    Private Sub OnSettingApiKeyClick(sender As Object, e As EventArgs)
+        Dim apiKeyPath As String = Path.Combine(Application.StartupPath, "ApiKey.txt")
+
+        ' Buat file default jika belum ada
+        If Not File.Exists(apiKeyPath) Then
+            File.WriteAllText(apiKeyPath, "MASUKKAN_API_KEY_ANDA_DISINI")
+        End If
+
+        ' Tampilkan form editor
+        Dim editor As New ApiKeySettingForm(apiKeyPath)
+        editor.ShowDialog()
+    End Sub
+
     ' Method alternatif jika ingin mengirim sebagai form data biasa
     Private Async Function SendDataToAPI(dataObj As CalibrationData, pdfFilePath As String) As Task(Of Boolean)
         Try
+            ' 1. Baca API Key dari file
+            Dim apiKey As String = LoadApiKeyFromFile()
+
+            If String.IsNullOrWhiteSpace(apiKey) OrElse apiKey = "MASUKKAN_API_KEY_ANDA_DISINI" Then
+                MessageBox.Show("API Key belum diatur. Silakan atur melalui tombol 'Setting API Key'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                Return False
+            End If
+
+            ' 2. Set header setiap kali request akan dikirim
+            httpClient.DefaultRequestHeaders.Remove("X-CONVERTER-API-KEY") ' Hapus header lama untuk menghindari duplikat
+            httpClient.DefaultRequestHeaders.Add("X-CONVERTER-API-KEY", apiKey)
+
             Dim apiUrl As String = "http://127.0.0.1:8000/api/v1/revision/send"
 
             Using content As New MultipartFormDataContent()

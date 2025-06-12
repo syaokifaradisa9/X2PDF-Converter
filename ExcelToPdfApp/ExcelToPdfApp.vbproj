@@ -160,6 +160,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ApiKeySettingForm.Designer.vb">
+      <DependentUpon>ApiKeySettingForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ApiKeySettingForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SheetSettingForm.Designer.vb">
       <DependentUpon>SheetSettingForm.vb</DependentUpon>
     </Compile>
